@@ -75,3 +75,4 @@ Apache 2.0. See [LICENSE](LICENSE).
 - [`cloudfit-core`](https://github.com/cloudfit-io/cloudfit-core) — Scoring engine. The thing this provider plugs into.
 - [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-provider-gcp) — GCP equivalent. Use it as the reference implementation.
 - [`cloudfit-api`](https://github.com/cloudfit-io/cloudfit-api) — REST API service. Will pick up AWS instances automatically once this provider ships and a snapshot is generated.
+- [`cloudfit-ui`](https://github.com/cloudfit-io/cloudfit-ui) — Gradio demo UI. Same story: AWS instances appear once the provider ships.
