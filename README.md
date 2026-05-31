@@ -66,7 +66,7 @@ If you'd find it useful before then, please file an issue or comment on the meta
 
 ## License
 
-Apache 2.0. Will be added when the first code commit lands.
+Apache 2.0. See [LICENSE](LICENSE).
 
 ---
 

@@ -1,0 +1,36 @@
+name: Feedback on planned v0.1.0 scope
+description: Disagree with what is or isn't in v0.1.0? Tell us what we should change.
+title: "[Scope] "
+labels: ["scope", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The planned v0.1.0 scope is documented in the [README](https://github.com/cloudfit-io/cloudfit-provider-aws/blob/main/README.md#scope-for-v010). This issue type is for arguing what should be added, removed, or reprioritized.
+
+        For requests for specific instance types or regions, use the [Request AWS support](https://github.com/cloudfit-io/cloudfit-provider-aws/issues/new?template=aws-support-request.yml) template instead.
+
+  - type: textarea
+    id: change-requested
+    attributes:
+      label: What should change in v0.1.0 scope?
+      description: Be specific. Reference the current scope table from the README.
+      placeholder: "e.g. Spot pricing should be in v0.1.0, not deferred."
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why?
+      description: What workload, constraint, or use case makes this important enough to change the plan?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What would you do if this isn't in v0.1.0?
+      description: Helps us understand whether deferring is acceptable or a hard blocker.
+    validations:
+      required: false

@@ -1,0 +1,68 @@
+name: Request AWS support (instance type / region)
+description: Tell us which AWS instance types, families, or regions matter most to your workloads. This directly influences provider priorities.
+title: "[Request] "
+labels: ["aws-request", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file this. The AWS provider is in the planning phase, and concrete requests like yours directly shape the v0.1.0 scope.
+
+        See the [README](https://github.com/cloudfit-io/cloudfit-provider-aws/blob/main/README.md) for the planned scope and roadmap.
+
+  - type: textarea
+    id: workload
+    attributes:
+      label: What workload are you trying to size?
+      description: A short description helps us understand which instance characteristics matter (vCPU, RAM, GPU, network, storage, spot tolerance).
+      placeholder: "e.g. RNA-seq alignment, batch ML training, Spark ETL, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: instance-types
+    attributes:
+      label: Which instance types or families matter to you?
+      description: List specific instance types (e.g. m6i.large, r6g.4xlarge), families (e.g. c7g, g5), or capabilities (e.g. Graviton, Inferentia, EFA).
+      placeholder: "e.g. c7i family, g5 GPU family, Graviton (c7g/m7g/r7g) coverage"
+    validations:
+      required: true
+
+  - type: textarea
+    id: regions
+    attributes:
+      label: Which AWS regions do you care about?
+      description: List the AWS regions you need first.
+      placeholder: "e.g. us-east-1, us-west-2, eu-west-1"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: pricing-model
+    attributes:
+      label: Which pricing model do you primarily use?
+      multiple: true
+      options:
+        - On-demand
+        - Spot
+        - Reserved Instances / Savings Plans
+        - Not sure / mixed
+    validations:
+      required: false
+
+  - type: textarea
+    id: current-tool
+    attributes:
+      label: What are you using today to make sizing decisions?
+      description: Helps us understand the gap cloudfit needs to close. AWS Compute Optimizer, Spot Advisor, manual spreadsheets, etc. are all valid answers.
+      placeholder: "e.g. AWS Compute Optimizer + a spreadsheet"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Anything else?
+      description: Constraints, deadlines, related tools, anything that adds context.
+    validations:
+      required: false
