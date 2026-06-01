@@ -51,7 +51,7 @@ Same shape as [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-
 
 AWS Pricing API is verbose enough to warrant focused work (roughly 4 to 6 weeks part-time), so this provider is the next discrete milestone after the launch of cloudfit-core v0.2 and cloudfit-api v0.2.
 
-If you'd find it useful before then, please file an issue or comment on the meta-issue once it's open — that signal directly affects the priority.
+If you'd find it useful before then, please file an issue or comment on the meta-issue once it's open: that signal directly affects the priority.
 
 ---
 
@@ -72,7 +72,7 @@ Apache 2.0. See [LICENSE](LICENSE).
 
 ## Related
 
-- [`cloudfit-core`](https://github.com/cloudfit-io/cloudfit-core) — Scoring engine. The thing this provider plugs into.
-- [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-provider-gcp) — GCP equivalent. Use it as the reference implementation.
-- [`cloudfit-api`](https://github.com/cloudfit-io/cloudfit-api) — REST API service. Will pick up AWS instances automatically once this provider ships and a snapshot is generated.
-- [`cloudfit-ui`](https://github.com/cloudfit-io/cloudfit-ui) — Gradio demo UI. Same story: AWS instances appear once the provider ships.
+- [`cloudfit-core`](https://github.com/cloudfit-io/cloudfit-core): Scoring engine. The thing this provider plugs into.
+- [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-provider-gcp): GCP equivalent. Use it as the reference implementation.
+- [`cloudfit-api`](https://github.com/cloudfit-io/cloudfit-api): REST API service. Will pick up AWS instances automatically once this provider ships and a snapshot is generated.
+- [`cloudfit-ui`](https://github.com/cloudfit-io/cloudfit-ui): Gradio demo UI. Same story: AWS instances appear once the provider ships.
