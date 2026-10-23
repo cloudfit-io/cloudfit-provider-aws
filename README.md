@@ -19,8 +19,8 @@ When complete, the typical usage will look like:
 from cloudfit_provider_aws import AWSProvider
 from cloudfit import rank, WorkloadProfile
 
-provider = AWSProvider(region="us-east-1")
-candidates = provider.fetch_instances()
+provider = AWSProvider()
+candidates = provider.fetch_instances(region="us-east-1")
 
 profile = WorkloadProfile(vcpu=32, ram_gb=128, optimize_for="balanced")
 ranked = rank(profile, candidates)
@@ -39,9 +39,11 @@ Same shape as [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-
 | Multi-region fetch (`fetch_instances_all_regions`) | yes |
 | Normalizer into cloudfit `MachineType` schema | yes |
 | Status / deprecation handling | yes |
-| Spot pricing | no, deferred to v0.2 |
+| Spot pricing (`spot_price_hr`) | no, deferred to v0.2 (cloudfit-core already scores it) |
 | Reserved Instances / Savings Plans modeling | no, separate roadmap item in cloudfit-core |
-| GPU type discrimination beyond VRAM | no, depends on cloudfit-core v0.3 work |
+
+Effective-capacity scoring (`perf_factor`) needs AWS families added to cloudfit-core's `PERF_FACTORS` table, which covers GCP families today; until then AWS instances score at the baseline speed.
+| GPU type (`gpu_type`) for throughput scoring | no, deferred (cloudfit-core 0.8.0 already scores it via `GPU_CLASS`) |
 
 ---
 
@@ -49,7 +51,7 @@ Same shape as [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-
 
 `cloudfit-core` and `cloudfit-provider-gcp` shipped first because GCP was the home turf. Validating the scoring engine and the provider plugin contract on a single cloud lets us avoid rebuilding the abstraction once we add AWS.
 
-AWS Pricing API is verbose enough to warrant focused work (roughly 4 to 6 weeks part-time), so this provider is the next discrete milestone after the launch of cloudfit-core v0.2 and cloudfit-api v0.2.
+AWS Pricing API is verbose enough to warrant focused work (roughly 4 to 6 weeks part-time), so this provider is the next discrete milestone. The provider contract has held steady across cloudfit-core releases up to 0.8, so AWS can plug in without rework.
 
 If you'd find it useful before then, please file an issue or comment on the meta-issue once it's open: that signal directly affects the priority.
 
