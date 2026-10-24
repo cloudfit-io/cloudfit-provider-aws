@@ -116,7 +116,8 @@ cloudfit-provider-aws/
 │   ├── provider.py          # AWSProvider: implements the Provider base class
 │   ├── pricelist.py         # streams and filters the public price list CSV
 │   ├── normalizer.py        # price list attributes → MachineType, GPU table
-│   └── regions.py           # AWS_REGIONS and SNAPSHOT_REGIONS
+│   ├── regions.py           # AWS_REGIONS and SNAPSHOT_REGIONS
+│   └── py.typed             # ships type hints (PEP 561)
 │
 ├── examples/
 │   ├── recommend.py         # live fetch → rank
