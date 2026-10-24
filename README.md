@@ -41,9 +41,9 @@ Same shape as [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-
 | Status / deprecation handling | yes |
 | Spot pricing (`spot_price_hr`) | no, deferred to v0.2 (cloudfit-core already scores it) |
 | Reserved Instances / Savings Plans modeling | no, separate roadmap item in cloudfit-core |
-
-Effective-capacity scoring (`perf_factor`) needs AWS families added to cloudfit-core's `PERF_FACTORS` table, which covers GCP families today; until then AWS instances score at the baseline speed.
 | GPU type (`gpu_type`) for throughput scoring | no, deferred (cloudfit-core 0.8.0 already scores it via `GPU_CLASS`) |
+
+Effective-capacity scoring is ready: cloudfit-core 0.9.0 ships `AWS_PERF_FACTORS` (EC2 families from Ivy Bridge to Graviton4) and AWS accelerators in `GPU_CLASS`, so the provider only has to call `perf_factor_for(instance_type)` and set `gpu_type`.
 
 ---
 
