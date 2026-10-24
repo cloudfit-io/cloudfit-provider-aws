@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+_No unreleased changes._
+
+## [0.1.1] - 2026-10-24
+
 ### Added
 - `refresh-snapshot` workflow: every Monday it rebuilds the AWS snapshot bundled by cloudfit-api and cloudfit-ui from the public price list and opens a pull request in each. Needs only a `SNAPSHOT_TOKEN` secret, no AWS credentials.
 
