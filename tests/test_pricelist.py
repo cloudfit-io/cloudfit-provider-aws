@@ -1,10 +1,12 @@
 """Tests for price list parsing against a recorded slice of the us-east-1 price list."""
 
+import urllib.error
 from pathlib import Path
 
 import pytest
 
 from cloudfit_provider_aws import parse_price_list
+from cloudfit_provider_aws.pricelist import open_price_list
 
 FIXTURE = Path(__file__).parent / "fixtures" / "us-east-1-sample.csv"
 
@@ -46,3 +48,12 @@ def test_spot_price_is_not_set(by_id):
 def test_no_header_raises():
     with pytest.raises(ValueError, match="no header"):
         parse_price_list(['"FormatVersion","v1.0"\n'], "us-east-1")
+
+
+def test_unknown_region_names_the_region(monkeypatch):
+    def not_found(url, timeout):
+        raise urllib.error.HTTPError(url, 404, "Not Found", None, None)
+
+    monkeypatch.setattr("urllib.request.urlopen", not_found)
+    with pytest.raises(ValueError, match="No public EC2 price list for region 'us-centrall-1'"):
+        list(open_price_list("us-centrall-1"))

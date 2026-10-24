@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `refresh-snapshot` workflow: every Monday it rebuilds the AWS snapshot bundled by cloudfit-api and cloudfit-ui from the public price list and opens a pull request in each. Needs only a `SNAPSHOT_TOKEN` secret, no AWS credentials.
 
 ### Changed
+- A region with no public price list (usually a mistyped region code) raises a `ValueError` naming the region instead of a bare `HTTP Error 404: Not Found`.
 - `examples/generate_snapshot.py` sorts rows by region and instance type, so a refresh diff shows only real changes instead of the price list's shifting row order.
 
 ## [0.1.0] - 2026-10-23

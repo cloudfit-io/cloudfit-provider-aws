@@ -14,6 +14,7 @@ from __future__ import annotations
 import csv
 import io
 import logging
+import urllib.error
 import urllib.request
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
@@ -53,9 +54,24 @@ class _Offer:
 
 
 def open_price_list(region: str, timeout: float = 120.0) -> Iterator[str]:
-    """Stream the price list CSV for a region, line by line."""
+    """Stream the price list CSV for a region, line by line.
+
+    Raises:
+        ValueError: if AWS publishes no price list for ``region`` (usually a
+            mistyped region code).
+    """
     url = PRICE_LIST_URL.format(region=region)
-    with urllib.request.urlopen(url, timeout=timeout) as response:
+    try:
+        response = urllib.request.urlopen(url, timeout=timeout)
+    except urllib.error.HTTPError as exc:
+        exc.close()  # an HTTPError holds the open error response
+        if exc.code in (403, 404):
+            raise ValueError(
+                f"No public EC2 price list for region {region!r} (HTTP {exc.code}). "
+                "Check the region code; AWS_REGIONS lists the supported ones."
+            ) from exc
+        raise
+    with response:
         yield from io.TextIOWrapper(response, encoding="utf-8", newline="")
 
 
