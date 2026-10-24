@@ -91,6 +91,10 @@ Each `MachineType` carries:
 python examples/generate_snapshot.py --output aws_snapshot.json
 ```
 
+Rows are sorted by region and instance type, so a refresh diff shows only real changes.
+
+The [`refresh-snapshot`](.github/workflows/refresh-snapshot.yml) workflow rebuilds the snapshot bundled by cloudfit-api and cloudfit-ui every Monday at 07:00 UTC and opens a pull request in each, where CI runs on it. It needs no AWS credentials, only a `SNAPSHOT_TOKEN` secret that can open pull requests in those two repos (see the comments in the workflow file).
+
 `fetch_instances_all_regions()` covers all 34 regions in `AWS_REGIONS` (about 30 downloads), or the list you pass.
 
 ---
@@ -109,7 +113,9 @@ cloudfit-provider-aws/
 ├── .github/
 │   ├── dependabot.yml       # monthly GitHub Actions updates
 │   ├── ISSUE_TEMPLATE/      # AWS coverage requests and scope feedback
-│   └── workflows/ci.yml     # lint, mypy --strict, tests; PyPI publish and release on tags
+│   └── workflows/
+│       ├── ci.yml           # lint, mypy --strict, tests; PyPI publish and release on tags
+│       └── refresh-snapshot.yml   # weekly snapshot PRs to cloudfit-api and cloudfit-ui
 │
 ├── cloudfit_provider_aws/
 │   ├── __init__.py          # exports AWSProvider, parse_price_list, regions
@@ -137,7 +143,7 @@ cloudfit-provider-aws/
 
 - [`cloudfit-core`](https://github.com/cloudfit-io/cloudfit-core): scoring engine. The thing this provider plugs into.
 - [`cloudfit-provider-gcp`](https://github.com/cloudfit-io/cloudfit-provider-gcp): the GCP equivalent.
-- [`cloudfit-api`](https://github.com/cloudfit-io/cloudfit-api) and [`cloudfit-ui`](https://github.com/cloudfit-io/cloudfit-ui): currently serve the GCP snapshot; AWS support is the next step.
+- [`cloudfit-api`](https://github.com/cloudfit-io/cloudfit-api) and [`cloudfit-ui`](https://github.com/cloudfit-io/cloudfit-ui): serve this provider's AWS snapshot alongside the GCP one.
 
 ## License
 

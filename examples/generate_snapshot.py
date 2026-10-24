@@ -56,6 +56,8 @@ def main() -> None:
         print(f"  {len(fetched)} instance types")
         instances.extend(fetched)
 
+    # Stable order (the price list's row order shifts), so a refresh diff shows only real changes.
+    instances.sort(key=lambda m: (m.region, m.id))
     rows = [m.model_dump(exclude_none=True) for m in instances]
     with open(args.output, "w") as f:
         json.dump(rows, f, indent=2)
