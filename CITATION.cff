@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use cloudfit-provider-aws in your research, please cite it."
+type: software
+title: "cloudfit-provider-aws: AWS EC2 provider plugin for cloudfit-core"
+abstract: >
+  cloudfit-provider-aws reads the public AWS EC2 price list, with no AWS
+  credentials needed, and normalizes instance types, on-demand and 1-year
+  reserved prices, GPU models, and generation status into MachineType objects
+  compatible with cloudfit-core's scoring engine.
+authors:
+  - family-names: Kasaraneni
+    given-names: Chaitanya Krishna
+    orcid: https://orcid.org/0000-0001-5792-1095
+    email: kc.kasaraneni@gmail.com
+version: 0.0.0
+date-released: "2026-10-23"
+license: Apache-2.0
+repository-code: https://github.com/cloudfit-io/cloudfit-provider-aws
+keywords:
+  - cloud computing
+  - AWS
+  - EC2
+  - instance type
+  - bioinformatics
+  - cloudfit
+  - instance recommendation
+references:
+  - type: software
+    title: cloudfit-core
+    authors:
+      - family-names: Kasaraneni
+        given-names: Chaitanya Krishna
+        orcid: https://orcid.org/0000-0001-5792-1095
+    repository-code: https://github.com/cloudfit-io/cloudfit-core

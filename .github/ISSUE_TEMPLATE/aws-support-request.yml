@@ -6,9 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to file this. The AWS provider is in the planning phase, and concrete requests like yours directly shape the v0.1.0 scope.
+        Thanks for taking the time to file this. Concrete requests like yours directly shape what the AWS provider covers next.
 
-        See the [README](https://github.com/cloudfit-io/cloudfit-provider-aws/blob/main/README.md) for the planned scope and roadmap.
+        See the [README](https://github.com/cloudfit-io/cloudfit-provider-aws/blob/main/README.md#not-included) for what is and isn't covered today.
 
   - type: textarea
     id: workload
